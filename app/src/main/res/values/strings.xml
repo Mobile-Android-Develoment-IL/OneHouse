@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">OneHouse</string>
+    // Navbar Bottom
+    <string name="homescreen">Home</string>
+    <string name="homeexplore">Explore</string>
+    <string name="homefavorite">Favorite</string>
+    <string name="homechat">Chat</string>
+    <string name="homeprofile">Profile</string>
+
 </resources>
