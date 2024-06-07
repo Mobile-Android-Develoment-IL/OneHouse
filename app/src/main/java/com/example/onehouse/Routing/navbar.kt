@@ -3,7 +3,9 @@ package com.example.onehouse.Routing
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Favorite
@@ -22,8 +24,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -43,7 +49,6 @@ import com.navbar_explore.Routing.screen
 fun Navbar(
     navController: NavHostController = rememberNavController(),
     modifier: Modifier = Modifier,
-    containerColor: Color = Color(0xFF6200EE),
 ) {
     Scaffold(
         bottomBar = {
@@ -56,7 +61,7 @@ fun Navbar(
             modifier = modifier.padding(contentPadding)
         ) {
             composable(screen.Home.route) {
-                Home(navHostController = navController)
+                Home(navController = navController)
             }
 
             composable(screen.Explore.route) {
@@ -90,71 +95,73 @@ fun NavBottomBar(
     navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
-    Box(
-        modifier = modifier
-            .border(1.5.dp, Color.Gray)
-            .padding(1.dp)
+    NavigationBar(
+        modifier = modifier,
+        containerColor = Color.Transparent,
+        contentColor = MaterialTheme.colorScheme.contentColorFor(Color(0xff121212)),
+        windowInsets = WindowInsets(top = 5, bottom = 8)
     ) {
-        NavigationBar(
-            modifier = modifier,
-            containerColor = Color.White,
-            contentColor = MaterialTheme.colorScheme.contentColorFor(Color(0xff121212)),
-            tonalElevation = NavigationBarDefaults.Elevation.plus(20.dp)
-        ) {
-            val navBackStackEntry by navController.currentBackStackEntryAsState()
-            val currentRoute = navBackStackEntry?.destination?.route
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route
 
 
-            val navItem = listOf(
-                navItem(
-                    title = stringResource(id = R.string.homescreen),
-                    icon = Icons.Default.Home,
-                    screen = screen.Home,
-                ),
-                navItem(
-                    title = stringResource(id = R.string.homeexplore),
-                    icon = Icons.Default.Search,
-                    screen = screen.Explore,
-                ),
-                navItem(
-                    title = stringResource(id = R.string.homefavorite),
-                    icon = Icons.Default.Favorite,
-                    screen = screen.Favorite,
-                ),
-                navItem(
-                    title = stringResource(id = R.string.homechat),
-                    icon = Icons.Default.Call,
-                    screen = screen.Chat,
-                ),
-                navItem(
-                    title = stringResource(id = R.string.homeprofile),
-                    icon = Icons.Default.Person,
-                    screen = screen.Profile,
-                ),
-            )
-            navItem.map { item ->
-                NavigationBarItem(
-                    selected = currentRoute == item.screen.route,
+        val navItem = listOf(
+            navItem(
+                title = stringResource(id = R.string.homescreen),
+                icon = R.drawable.ic_home,
+                screen = screen.Home,
+            ),
+            navItem(
+                title = stringResource(id = R.string.homeexplore),
+                icon = R.drawable.ic_explore,
+                screen = screen.Explore,
+            ),
+            navItem(
+                title = stringResource(id = R.string.homefavorite),
+                icon = R.drawable.ic_fav,
+                screen = screen.Favorite,
+            ),
+            navItem(
+                title = stringResource(id = R.string.homechat),
+                icon = R.drawable.ic_chat,
+                screen = screen.Chat,
+            ),
+            navItem(
+                title = stringResource(id = R.string.homeprofile),
+                icon = R.drawable.ic_prof,
+                screen = screen.Profile,
+            ),
+        )
+        navItem.map { item ->
+            NavigationBarItem(
+                selected = currentRoute == item.screen.route,
 
-                    onClick = {
-                        navController.navigate(item.screen.route) {
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            restoreState = true
-                            launchSingleTop = true
+                onClick = {
+                    navController.navigate(item.screen.route) {
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
                         }
-                    },
-                    icon = {
-                        Icon(
-                            imageVector = item.icon,
-                            contentDescription = item.title,
-                            tint = Color.Black,
+                        restoreState = true
+                        launchSingleTop = true
+                    }
+                },
+                icon = {
+                    Icon(
+                        painter = painterResource(id = item.icon),
+                        contentDescription = item.title,
+                        tint = Color.Black,
+                        modifier = Modifier.size(size = 25.dp)
+                    )
+                },
+                label = {
+                    Text(
+                        text = item.title, style = TextStyle(
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.SemiBold,
                         )
-                    },
-                    label = { Text(text = item.title) }
-                )
-            }
+                    )
+                }
+            )
         }
     }
 }

@@ -2,4 +2,11 @@
 <resources>
 
     <style name="Theme.OneHouse" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="FullScreen" parent="Theme.OneHouse">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>
