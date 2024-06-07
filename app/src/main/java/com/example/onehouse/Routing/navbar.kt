@@ -56,7 +56,7 @@ fun Navbar(
             modifier = modifier.padding(contentPadding)
         ) {
             composable(screen.Home.route) {
-                Home(navHostController = navController)
+                Home(navController = navController)
             }
 
             composable(screen.Explore.route) {
