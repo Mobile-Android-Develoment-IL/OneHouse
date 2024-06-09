@@ -1,4 +1,4 @@
-package com.example.onehouse.Page.Component.Explore
+package com.example.onehouse.page.component.explore
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,8 +9,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.viewpager2.widget.ViewPager2
-import com.example.onehouse.Page.Component.Explore.VideoAdapter
-import com.example.onehouse.Page.Component.Explore.VidioItem
 import com.example.onehouse.R
 import com.example.onehouse.ui.theme.OneHouseTheme
 

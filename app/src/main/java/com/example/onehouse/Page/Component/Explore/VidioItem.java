@@ -1,4 +1,4 @@
-package com.example.onehouse.Page.Component.Explore;
+package com.example.onehouse.page.component.explore;
 
 import android.content.Context;
 

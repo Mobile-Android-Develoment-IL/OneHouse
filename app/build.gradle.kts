@@ -61,7 +61,6 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -73,8 +72,7 @@ dependencies {
     //navigation
     implementation(libs.androidx.navigation.compose)
 
-    // ViewPager
-    implementation("androidx.viewpager2:viewpager2:1.1.0")
-
-    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
+    //Explorr
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.viewpager2)
 }
