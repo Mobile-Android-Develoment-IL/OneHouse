@@ -73,7 +73,7 @@ dependencies {
     //navigation
     implementation(libs.androidx.navigation.compose)
 
-    //Explorr
+    //Explore
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.viewpager2)
 }
