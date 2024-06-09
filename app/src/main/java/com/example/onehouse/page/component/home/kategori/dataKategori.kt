@@ -1,6 +1,5 @@
-package com.example.onehouse.Page.Component.Home.kategori
+package com.example.onehouse.page.component.home.kategori
 
-import androidx.compose.ui.res.painterResource
 import com.example.onehouse.R
 
 object dataKategori {

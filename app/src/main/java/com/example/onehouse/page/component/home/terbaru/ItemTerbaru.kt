@@ -1,4 +1,4 @@
-package com.example.onehouse.Page.Component.Home.terbaru
+package com.example.onehouse.page.component.home.terbaru
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -24,27 +24,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import com.example.onehouse.Page.Component.Home.recomendasi.ItemRekomen
-import com.example.onehouse.Page.Component.Home.recomendasi.MRekomendasi
 import com.example.onehouse.R
 import com.example.onehouse.ui.theme.OneHouseTheme
 
 @Composable
-fun ItemTerbaru(modifier: Modifier = Modifier,
-                mterbaru : MTerbaru,
-                ) {
-    Card (
-        modifier = Modifier
-
-            .fillMaxWidth(),
+fun ItemTerbaru(
+    modifier: Modifier = Modifier,
+    mterbaru: MTerbaru,
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
         elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
     ) {
-        Row (
+        Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)
-        ){
+        ) {
             Image(
                 painter = painterResource(id = mterbaru.photoRmh),
                 contentDescription = "rmhterbaru",
@@ -55,13 +51,13 @@ fun ItemTerbaru(modifier: Modifier = Modifier,
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.width(10.dp))
-            Column (modifier = Modifier,){
+            Column(modifier = Modifier) {
                 Text(text = mterbaru.judulrumah, fontSize = 18.sp, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(text = "Harga       " + mterbaru.harga)
                 Spacer(modifier = Modifier.height(5.dp))
                 Row {
-                    Image(painter = painterResource(id = R.drawable.map), contentDescription = "map", modifier = Modifier.size(20.dp) )
+                    Image(painter = painterResource(id = mterbaru.iconlok), contentDescription = "map", modifier = Modifier.size(20.dp))
                     Spacer(modifier = Modifier.width(10.dp))
                     Text(text = "Jl. Mangga2, Block A")
                 }
@@ -74,8 +70,8 @@ fun ItemTerbaru(modifier: Modifier = Modifier,
 @Composable
 private fun TerbaruItemPreview() {
     OneHouseTheme {
-        ItemTerbaru(mterbaru = MTerbaru(1,R.drawable.rumahtr1,"Rumah Type 13 Minimalis","Rp. 600.000.000",R.drawable.map),
-
+        ItemTerbaru(
+            mterbaru = MTerbaru(1, R.drawable.rumahtr1, "Rumah Type 13 Minimalis", "Rp. 600.000.000", R.drawable.map),
         )
     }
 }

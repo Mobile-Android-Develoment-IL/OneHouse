@@ -1,6 +1,4 @@
-package com.example.onehouse.Page.Component.Home.terbaru
-
-import android.graphics.drawable.Icon
+package com.example.onehouse.page.component.home.terbaru
 
 data class MTerbaru (
     val id :Int,

@@ -1,21 +1,12 @@
 package com.example.onehouse.Routing
 
 
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -32,16 +23,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.onehouse.Page.Explore
-import com.example.onehouse.Page.Favorite
-import com.example.onehouse.Page.Home
-import com.example.onehouse.Page.Profile
+import androidx.navigation.navArgument
+import com.example.onehouse.page.component.home.kategori.daftarRumah
+
+import com.example.onehouse.page.Explore
+import com.example.onehouse.page.Favorite
+import com.example.onehouse.page.Home
+import com.example.onehouse.page.Profile
 import com.example.onehouse.R
-import com.example.onehouse.page.chat.ChatScreen
 import com.navbar_explore.Routing.navItem
 import com.navbar_explore.Routing.screen
 
@@ -72,20 +66,20 @@ fun Navbar(
                 Favorite()
             }
             composable(screen.Chat.route) {
-                ChatScreen()
+//                Chat()
             }
             composable(screen.Profile.route) {
                 Profile()
             }
-//            composable(
-//                Screen.Detail.route + "/{filmId}",
-//                arguments = listOf(navArgument("filmId") { type = NavType.IntType })
-//            ) { navBackStackEntry ->
-//                DetailHome(
-//                    navController = navController,
-//                    filmId = navBackStackEntry.arguments?.getInt("filmId")
-//                )
-//            }
+            composable(
+                screen.daftarRumah.route + "/{mkategoriId}",
+                arguments = listOf(navArgument("mkategoriId") { type = NavType.IntType })
+            ) { navBackStackEntry ->
+                daftarRumah(
+                    navController = navController,
+                    mkategories = navBackStackEntry.arguments?.getInt("mkategoriId")
+                )
+            }
         }
     }
 }
@@ -99,7 +93,7 @@ fun NavBottomBar(
         modifier = modifier,
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.contentColorFor(Color(0xff121212)),
-        windowInsets = WindowInsets(top = 5, bottom = 8)
+        windowInsets = WindowInsets( bottom = 100)
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route

@@ -1,4 +1,4 @@
-package com.example.onehouse.Page.Component.Home.kategori
+package com.example.onehouse.page.component.home.kategori
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -28,7 +28,7 @@ fun ItemKategori(modifier: Modifier = Modifier,
             onItemClicked(mkategori.id)
         }
     ){
-        Image(painter = painterResource(id = mkategori.iconn), contentDescription = mkategori.namekategori, modifier = Modifier.size(50.dp))
+        Image(painter = painterResource(id = mkategori.iconn), contentDescription = mkategori.namekategori, modifier = Modifier.size(30.dp))
         Spacer(modifier = Modifier.height(5.dp))
         Text(text = mkategori.namekategori, fontSize = 16.sp)
     }

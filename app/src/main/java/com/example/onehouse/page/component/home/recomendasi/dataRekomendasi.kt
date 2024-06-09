@@ -1,4 +1,4 @@
-package com.example.onehouse.Page.Component.Home.recomendasi
+package com.example.onehouse.page.component.home.recomendasi
 
 import com.example.onehouse.R
 

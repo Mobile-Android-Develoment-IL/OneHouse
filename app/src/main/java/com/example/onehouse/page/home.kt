@@ -1,7 +1,8 @@
-package com.example.onehouse.Page
+package com.example.onehouse.page
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -25,23 +27,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import com.example.onehouse.Page.Component.Home.kategori.ItemKategori
-import com.example.onehouse.Page.Component.Home.kategori.MKategori
-import com.example.onehouse.Page.Component.Home.kategori.dataKategori
-import com.example.onehouse.Page.Component.Home.recomendasi.ItemRekomen
-import com.example.onehouse.Page.Component.Home.recomendasi.MRekomendasi
-import com.example.onehouse.Page.Component.Home.recomendasi.dataRekomendasi
-import com.example.onehouse.Page.Component.Home.terbaru.ItemTerbaru
-import com.example.onehouse.Page.Component.Home.terbaru.MTerbaru
-import com.example.onehouse.Page.Component.Home.terbaru.dataTerbaru
+import com.example.onehouse.page.component.home.kategori.ItemKategori
+import com.example.onehouse.page.component.home.kategori.MKategori
+import com.example.onehouse.page.component.home.kategori.dataKategori
+import com.example.onehouse.page.component.home.recomendasi.ItemRekomen
+import com.example.onehouse.page.component.home.recomendasi.MRekomendasi
+import com.example.onehouse.page.component.home.recomendasi.dataRekomendasi
+import com.example.onehouse.page.component.home.terbaru.ItemTerbaru
+import com.example.onehouse.page.component.home.terbaru.MTerbaru
+import com.example.onehouse.page.component.home.terbaru.dataTerbaru
 import com.example.onehouse.R
+import com.navbar_explore.Routing.screen
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,13 +56,20 @@ fun Home(
 ) {
     var searchQuery by remember { mutableStateOf("") }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize()
+        ) {
+        Box (modifier = Modifier.padding(start = 160.dp)){
+            Text(
+                text = "Lokasi", fontSize = 18.sp, fontWeight = FontWeight.Bold
+            )
+        }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp),
+                .padding(start = 20.dp, end = 20.dp, bottom = 10.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
+
             SearchBar(
                 query = searchQuery,
                 onQueryChange = { searchQuery = it },
@@ -70,14 +78,15 @@ fun Home(
                 onActiveChange = {},
                 placeholder = { Text("Search") },
                 modifier = Modifier
-                    .weight(1f)
+                    .width(300.dp)
                     .height(50.dp)
             ) {}
             Spacer(modifier = Modifier.width(16.dp))
             IconButton(onClick = { /*TODO*/ }, modifier = Modifier.padding(top = 45.dp)) {
                 Image(
                     painter = painterResource(id = R.drawable.filter),
-                    contentDescription = null
+                    contentDescription = null,
+                    modifier = modifier.size(25.dp)
                 )
             }
         }
@@ -88,7 +97,7 @@ fun Home(
             modifier = Modifier.fillMaxSize()
         ) {
             item {
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(10.dp))
                 Text(text = "Kategori", fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
 
@@ -100,7 +109,7 @@ fun Home(
                 ) {
                     items(kategoris, key = { it.id }) {
                         ItemKategori(mkategori = it) { mkategoriId ->
-                            // navController.navigate(Screen.Detail.route + "/$mkategoriId")
+                             navController.navigate(screen.daftarRumah.route + "/$mkategoriId")
                         }
                     }
                 }
@@ -118,7 +127,7 @@ fun Home(
                 ) {
                     items(rekomens, key = { it.id }) {
                         ItemRekomen(mrekomendasi = it) { mrekomendasiId ->
-                            // navController.navigate(Screen.Detail.route + "/$mrekomendasiId")
+//                             navController.navigate(screen.Detail.route + "/$mrekomendasiId")
                         }
                     }
                 }
@@ -129,9 +138,10 @@ fun Home(
             }
 
             items(terbarru, key = { it.id }) {
-                ItemTerbaru(mterbaru = it, modifier = Modifier.padding(horizontal = 16.dp))
+                ItemTerbaru(mterbaru = it, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
             }
         }
+
     }
 }
 

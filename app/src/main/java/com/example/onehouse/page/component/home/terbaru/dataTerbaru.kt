@@ -1,4 +1,4 @@
-package com.example.onehouse.Page.Component.Home.terbaru
+package com.example.onehouse.page.component.home.terbaru
 
 import com.example.onehouse.R
 
