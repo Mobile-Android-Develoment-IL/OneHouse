@@ -32,7 +32,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.onehouse.page.component.home.kategori.ItemKategori
 import com.example.onehouse.page.component.home.kategori.MKategori
 import com.example.onehouse.page.component.home.kategori.dataKategori
 import com.example.onehouse.page.component.home.recomendasi.ItemRekomen
@@ -42,7 +41,7 @@ import com.example.onehouse.page.component.home.terbaru.ItemTerbaru
 import com.example.onehouse.page.component.home.terbaru.MTerbaru
 import com.example.onehouse.page.component.home.terbaru.dataTerbaru
 import com.example.onehouse.R
-import com.navbar_explore.Routing.screen
+import com.example.onehouse.page.component.home.kategori.Kategori
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -107,10 +106,8 @@ fun Home(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     modifier = modifier
                 ) {
-                    items(kategoris, key = { it.id }) {
-                        ItemKategori(mkategori = it) { mkategoriId ->
-                             navController.navigate(screen.daftarRumah.route + "/$mkategoriId")
-                        }
+                    item {
+                        Kategori(navController = navController)
                     }
                 }
             }

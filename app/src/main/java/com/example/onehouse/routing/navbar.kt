@@ -23,19 +23,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import com.example.onehouse.page.component.home.kategori.daftarRumah
 
 import com.example.onehouse.page.Explore
 import com.example.onehouse.page.Favorite
 import com.example.onehouse.page.Home
 import com.example.onehouse.page.Profile
 import com.example.onehouse.R
+import com.example.onehouse.page.component.home.kategori.navigate.daftarApartment
+import com.example.onehouse.page.component.home.kategori.navigate.daftarRumah
+import com.example.onehouse.page.component.home.kategori.navigate.daftarTanah
+import com.example.onehouse.page.component.home.kategori.navigate.daftarVilla
 import com.navbar_explore.Routing.navItem
 import com.navbar_explore.Routing.screen
 
@@ -71,15 +72,32 @@ fun Navbar(
             composable(screen.Profile.route) {
                 Profile()
             }
-            composable(
-                screen.daftarRumah.route + "/{mkategoriId}",
-                arguments = listOf(navArgument("mkategoriId") { type = NavType.IntType })
-            ) { navBackStackEntry ->
-                daftarRumah(
-                    navController = navController,
-                    mkategories = navBackStackEntry.arguments?.getInt("mkategoriId")
-                )
+            //home kategori
+            composable(screen.daftarRumah.route){
+                daftarRumah()
             }
+
+            composable(screen.daftarApartment.route){
+                daftarApartment(navController = navController)
+            }
+
+            composable(screen.daftarVilla.route){
+                daftarVilla(navController = navController)
+            }
+
+            composable(screen.daftarTanah.route){
+                daftarTanah(navController = navController)
+            }
+
+//            composable(
+//                screen.daftarRumah.route + "/{mkategoriId}",
+//                arguments = listOf(navArgument("mkategoriId") { type = NavType.IntType })
+//            ) { navBackStackEntry ->
+//                daftarRumah(
+//                    navController = navController,
+//                    mkategories = navBackStackEntry.arguments?.getInt("mkategoriId")
+//                )
+//            }
         }
     }
 }

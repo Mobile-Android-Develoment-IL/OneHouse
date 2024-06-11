@@ -1,14 +1,16 @@
-package com.example.onehouse.page.component.home.kategori
+package com.example.onehouse.page.component.home.kategori.navigate
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 
 @Composable
-fun daftarRumah(modifier: Modifier = Modifier,
+fun daftarVilla(modifier: Modifier = Modifier,
                 navController: NavController,
-                mkategories:Int?
                 ) {
-    Text(text = "coba")
+    Column (modifier = modifier){
+        Text(text = "Daftar Villa")
+    }
 }

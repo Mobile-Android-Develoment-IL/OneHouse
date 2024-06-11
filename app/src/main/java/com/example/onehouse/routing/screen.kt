@@ -7,5 +7,8 @@ sealed class screen(val route: String) {
     data object Chat : screen("homechat")
     data object Profile : screen("homeprofile")
     data object daftarRumah : screen("daftarRumah")
+    data object daftarApartment : screen("daftarApartment")
+    data object daftarVilla : screen("daftarVilla")
+    data object daftarTanah: screen("daftarTanah")
 
 }
