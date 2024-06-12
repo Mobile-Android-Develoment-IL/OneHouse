@@ -99,7 +99,7 @@ fun SignIn(navController: NavController){
                 .fillMaxWidth(0.5f),
             onClick = {
 //            Log.i("Credential", "Email : $email Password : $password")
-                navController.navigate("home")
+                navController.navigate("homescreen")
             }) {
             Text(text = "Masuk")
         }

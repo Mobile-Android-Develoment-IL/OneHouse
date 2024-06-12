@@ -1,6 +1,5 @@
 package com.example.onehouse.Routing
 
-
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -39,6 +38,8 @@ import com.example.onehouse.page.component.home.kategori.navigate.daftarTanah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarVilla
 import com.navbar_explore.Routing.navItem
 import com.navbar_explore.Routing.screen
+import com.example.onehouse.SignIn
+import com.example.onehouse.Register
 
 @Composable
 fun Navbar(
@@ -52,52 +53,50 @@ fun Navbar(
     ) { contentPadding ->
         NavHost(
             navController = navController,
-            startDestination = screen.Home.route,
+            startDestination = "signInScreen",
             modifier = modifier.padding(contentPadding)
         ) {
+            // SignIn and Register
+            composable("signInScreen") {
+                SignIn(navController = navController)
+            }
+            composable("register") {
+                Register(navController = navController)
+            }
+
+            // Navbar and its screens
+            composable("home") {
+                Navbar(navController = navController)
+            }
             composable(screen.Home.route) {
                 Home(navController = navController)
             }
-
             composable(screen.Explore.route) {
                 Explore()
             }
-
             composable(screen.Favorite.route) {
                 Favorite()
             }
             composable(screen.Chat.route) {
-//                Chat()
+                // Chat()
             }
             composable(screen.Profile.route) {
                 Profile()
             }
-            //home kategori
-            composable(screen.daftarRumah.route){
-                daftarRumah()
-            }
 
-            composable(screen.daftarApartment.route){
+            // Home categories
+            composable(screen.daftarRumah.route) {
+                daftarRumah(navController)
+            }
+            composable(screen.daftarApartment.route) {
                 daftarApartment(navController = navController)
             }
-
-            composable(screen.daftarVilla.route){
+            composable(screen.daftarVilla.route) {
                 daftarVilla(navController = navController)
             }
-
-            composable(screen.daftarTanah.route){
+            composable(screen.daftarTanah.route) {
                 daftarTanah(navController = navController)
             }
-
-//            composable(
-//                screen.daftarRumah.route + "/{mkategoriId}",
-//                arguments = listOf(navArgument("mkategoriId") { type = NavType.IntType })
-//            ) { navBackStackEntry ->
-//                daftarRumah(
-//                    navController = navController,
-//                    mkategories = navBackStackEntry.arguments?.getInt("mkategoriId")
-//                )
-//            }
         }
     }
 }
@@ -111,11 +110,10 @@ fun NavBottomBar(
         modifier = modifier,
         containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.contentColorFor(Color(0xff121212)),
-        windowInsets = WindowInsets( bottom = 100)
+        windowInsets = WindowInsets(bottom = 100)
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
-
 
         val navItem = listOf(
             navItem(
@@ -147,7 +145,6 @@ fun NavBottomBar(
         navItem.map { item ->
             NavigationBarItem(
                 selected = currentRoute == item.screen.route,
-
                 onClick = {
                     navController.navigate(item.screen.route) {
                         popUpTo(navController.graph.findStartDestination().id) {
