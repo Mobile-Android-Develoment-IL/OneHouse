@@ -70,7 +70,7 @@ fun daftarRumah(
             modifier = modifier.fillMaxSize(),
         ) {
             items(rumah, key = { it.id }) {
-                ListdaftarRumah(rumah = it)
+                ListdaftarRumah(navController = navController, rumah = it)
             }
         }
     }

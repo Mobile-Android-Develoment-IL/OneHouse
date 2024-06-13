@@ -10,10 +10,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.onehouse.Routing.Navbar
+import com.example.onehouse.page.component.home.kategori.detailKategori.detailRumah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarApartment
 import com.example.onehouse.page.component.home.kategori.navigate.daftarRumah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarTanah
@@ -52,6 +55,8 @@ class MainActivity : ComponentActivity() {
                         composable("daftarTanah") {
                             daftarTanah(navController = navController)
                         }
+
+
                     }
 
                 }

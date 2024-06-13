@@ -5,12 +5,15 @@ import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.onehouse.page.Explore
 import com.example.onehouse.page.Favorite
 import com.example.onehouse.page.Home
 import com.example.onehouse.page.Profile
+import com.example.onehouse.page.component.home.kategori.detailKategori.detailRumah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarApartment
 import com.example.onehouse.page.component.home.kategori.navigate.daftarRumah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarTanah
@@ -53,5 +56,6 @@ fun BottomGraph(
         composable(screen.daftarTanah.route) {
             daftarTanah(navController = navController)
         }
+
     }
 }
