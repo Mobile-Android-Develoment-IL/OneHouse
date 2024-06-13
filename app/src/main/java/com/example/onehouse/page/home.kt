@@ -57,7 +57,7 @@ fun Home(
 
     Column(modifier = Modifier.fillMaxSize()
         ) {
-        Box (modifier = Modifier.padding(start = 160.dp)){
+        Box (modifier = Modifier.padding(top = 50.dp, start = 160.dp)){
             Text(
                 text = "Lokasi", fontSize = 18.sp, fontWeight = FontWeight.Bold
             )

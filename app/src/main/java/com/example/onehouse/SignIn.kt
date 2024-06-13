@@ -97,9 +97,7 @@ fun SignIn(navController: NavController){
         Button(
             modifier = Modifier
                 .fillMaxWidth(0.5f),
-            onClick = {
-//            Log.i("Credential", "Email : $email Password : $password")
-                navController.navigate("homescreen")
+            onClick = { navController.navigate("homeNav")
             }) {
             Text(text = "Masuk")
         }

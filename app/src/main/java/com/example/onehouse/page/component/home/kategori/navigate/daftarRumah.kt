@@ -38,6 +38,7 @@ fun daftarRumah(
     Column(modifier = modifier) {
         Box(
             modifier = Modifier
+                .padding(top = 50.dp)
                 .fillMaxWidth()
                 .height(50.dp)
                 .background(Color(0xf55AD9B)),
