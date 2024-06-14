@@ -1,5 +1,6 @@
 package com.example.onehouse
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +16,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -27,21 +30,29 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.onehouse.viewmodel.AuthViewModel
 
 @Composable
-fun SignIn(navController: NavController){
+fun SignIn(navController: NavController, authViewModel: AuthViewModel) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var errorMessage by remember { mutableStateOf("") }
+    val signInResult by authViewModel.signInResult.collectAsState()
 
-    var email by remember {
-        mutableStateOf("")
+    LaunchedEffect(signInResult) {
+        signInResult?.let {
+            if (it.isSuccess) {
+                navController.navigate("homeNav")
+            } else {
+                errorMessage = it.exceptionOrNull()?.message ?: "Unknown error occurred"
+            }
+        }
     }
-
-    var password by remember {
-        mutableStateOf("")
-    }
-
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(50.dp))
@@ -50,30 +61,47 @@ fun SignIn(navController: NavController){
         Text(text = "Masuk Sekarang", fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
 
         Spacer(modifier = Modifier.height(15.dp))
-        Image(painter = painterResource(id = R.drawable.logo_onehouse),
+        Image(
+            painter = painterResource(id = R.drawable.logo_onehouse),
             contentDescription = "Login Image",
-            modifier = Modifier.size(330.dp))
+            modifier = Modifier.size(330.dp)
+        )
 
-        OutlinedTextField(value = email, onValueChange = {email = it}, label = {
-            Text(text = "Email/No. Hp")
-        })
+        OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            label = { Text(text = "Email/No. Hp") },
+            modifier = Modifier.fillMaxWidth()
+        )
         Spacer(modifier = Modifier.height(10.dp))
-        OutlinedTextField(value = password, onValueChange = {password = it}, label = {
-            Text(text = "Kata Sandi")
-        }, visualTransformation = PasswordVisualTransformation())
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text(text = "Kata Sandi") },
+            visualTransformation = PasswordVisualTransformation(),
+            modifier = Modifier.fillMaxWidth()
+        )
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 260.dp, end = 0.dp)
+                .padding(end = 16.dp),
+            horizontalArrangement = Arrangement.End
         ) {
-            Text(text = "Lupa Kata Sandi?",
-                modifier = Modifier.clickable {  },
+            Text(
+                text = "Lupa Kata Sandi?",
+                modifier = Modifier.clickable { /* Navigate to forgot password screen */ },
                 fontSize = 10.sp,
-                fontWeight = FontWeight.Light)
+                fontWeight = FontWeight.Light
+            )
         }
 
         Spacer(modifier = Modifier.height(10.dp))
+
+        if (errorMessage.isNotEmpty()) {
+            Text(text = errorMessage, color = androidx.compose.ui.graphics.Color.Red)
+        }
+
         Row(
             modifier = Modifier.padding(top = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -96,9 +124,10 @@ fun SignIn(navController: NavController){
 
         Button(
             modifier = Modifier
-                .fillMaxWidth(0.5f),
-            onClick = { navController.navigate("homeNav")
-            }) {
+                .fillMaxWidth(0.5f)
+                .padding(top = 16.dp),
+            onClick = { authViewModel.signIn(email, password) }
+        ) {
             Text(text = "Masuk")
         }
 
@@ -109,17 +138,21 @@ fun SignIn(navController: NavController){
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            Image(painter = painterResource(id = R.drawable.google),
+            Image(
+                painter = painterResource(id = R.drawable.google),
                 contentDescription = "Google",
                 modifier = Modifier
                     .size(60.dp)
-                    .clickable { /* google */ })
+                    .clickable { /* Handle Google Sign-In */ }
+            )
 
-            Image(painter = painterResource(id = R.drawable.facebook),
+            Image(
+                painter = painterResource(id = R.drawable.facebook),
                 contentDescription = "Facebook",
                 modifier = Modifier
                     .size(60.dp)
-                    .clickable { /* facebook */ })
+                    .clickable { /* Handle Facebook Sign-In */ }
+            )
         }
     }
 }

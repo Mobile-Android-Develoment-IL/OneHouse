@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "430011145019",
+    "project_id": "onehouse-426d4",
+    "storage_bucket": "onehouse-426d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430011145019:android:7a6fe4eeccf3d931b7751e",
+        "android_client_info": {
+          "package_name": "com.example.onehouse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAteA4ghEz5ajTZZkiT3lCTA6_3v4CF5m0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
