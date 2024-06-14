@@ -63,7 +63,7 @@ fun daftarRumah(
             )
         }
         LazyVerticalGrid(
-            contentPadding = PaddingValues(16.dp),
+            contentPadding = PaddingValues(20.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             columns = GridCells.Adaptive(150.dp),
