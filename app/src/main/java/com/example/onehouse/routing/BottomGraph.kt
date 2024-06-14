@@ -1,5 +1,7 @@
 package com.example.onehouse.routing
 
+
+import ChatScreen
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
@@ -40,8 +42,8 @@ fun BottomGraph(
         composable(screen.Favorite.route) {
             Favorite()
         }
-        composable(screen.Chat.route) {
-            // Chat()
+        composable(screen.ChatScreen.route) {
+             ChatScreen()
         }
         composable(screen.Profile.route) {
             Profile(navController = navController)

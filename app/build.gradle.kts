@@ -91,4 +91,8 @@ dependencies {
 
     //Image
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    //map
+    implementation("com.google.maps.android:maps-compose:4.3.3")
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
 }

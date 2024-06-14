@@ -80,7 +80,7 @@ fun NavBottomBar(
             navItem(
                 title = stringResource(id = R.string.homechat),
                 icon = R.drawable.ic_chat,
-                screen = screen.Chat,
+                screen = screen.ChatScreen,
             ),
             navItem(
                 title = stringResource(id = R.string.homeprofile),
