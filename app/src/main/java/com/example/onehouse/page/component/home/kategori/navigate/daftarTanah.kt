@@ -26,13 +26,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.onehouse.page.component.home.kategori.data.data
+import com.example.onehouse.page.component.home.kategori.list.ListdaftarRumah
 import com.example.onehouse.page.component.home.kategori.list.ListdaftarTanah
 import com.example.onehouse.page.component.home.kategori.model.MdaftarTanah
 
 @Composable
 fun daftarTanah(modifier: Modifier = Modifier,
                 navController: NavController,
-                tanahh: List<MdaftarTanah> = data.dtTanah
+                tanah: List<MdaftarTanah> = data.dtTanah
                 ) {
     Column (modifier = modifier){
         Box(
@@ -68,8 +69,8 @@ fun daftarTanah(modifier: Modifier = Modifier,
             columns = GridCells.Adaptive(150.dp),
             modifier = modifier.fillMaxSize(),
         ) {
-            items(tanahh, key = { it.id }) {
-                ListdaftarTanah(tanahh = it)
+            items(tanah, key = { it.id }) {
+                ListdaftarTanah(navController = navController, tanah = it)
             }
         }
     }

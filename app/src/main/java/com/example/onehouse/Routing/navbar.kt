@@ -26,8 +26,9 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-
 import com.example.onehouse.R
+import com.example.onehouse.routing.BottomGraph
+
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -53,7 +54,7 @@ fun NavBottomBar(
 ) {
     NavigationBar(
         modifier = modifier,
-        containerColor = Color.Transparent,
+        containerColor = Color.White,
         contentColor = MaterialTheme.colorScheme.contentColorFor(Color(0xff121212)),
         windowInsets = WindowInsets(bottom = 100)
     ) {

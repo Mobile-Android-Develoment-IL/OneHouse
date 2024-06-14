@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.onehouse.page.component.home.kategori.data.data
 import com.example.onehouse.page.component.home.kategori.list.ListdaftarApartment
+import com.example.onehouse.page.component.home.kategori.list.ListdaftarRumah
 import com.example.onehouse.page.component.home.kategori.model.MdaftarApartment
 
 @Composable
@@ -69,7 +70,7 @@ fun daftarApartment(modifier: Modifier = Modifier,
             modifier = modifier.fillMaxSize(),
         ) {
             items(apart, key = { it.id }) {
-                ListdaftarApartment(apart = it)
+                ListdaftarApartment(navController = navController, apart = it)
             }
         }
     }

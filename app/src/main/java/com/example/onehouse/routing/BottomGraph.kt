@@ -13,11 +13,15 @@ import com.example.onehouse.page.Explore
 import com.example.onehouse.page.Favorite
 import com.example.onehouse.page.Home
 import com.example.onehouse.page.Profile
-import com.example.onehouse.page.component.home.kategori.detailKategori.DetailRumah
+import com.example.onehouse.page.component.home.kategori.detailKategori.detailApartment
+import com.example.onehouse.page.component.home.kategori.detailKategori.detailRumah
+import com.example.onehouse.page.component.home.kategori.detailKategori.detailTanah
+import com.example.onehouse.page.component.home.kategori.detailKategori.detailVilla
 import com.example.onehouse.page.component.home.kategori.navigate.daftarApartment
 import com.example.onehouse.page.component.home.kategori.navigate.daftarRumah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarTanah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarVilla
+import com.example.onehouse.routing.screen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -56,15 +60,43 @@ fun BottomGraph(
             daftarTanah(navController = navController)
         }
 
-        composable("detailRumah/{rumahId}",
-            arguments = listOf(navArgument("rumahId") {
-                type = NavType.IntType
-            })
-        ) { backStackEntry ->
-            val rumahId = backStackEntry.arguments?.getInt("rumahId")
-            if (rumahId != null) {
-                DetailRumah(navController, rumahId)
-            }
+        composable(
+            screen.detailRumah.route + "/{rumahId}",
+            arguments = listOf(navArgument("rumahId") { type = NavType.IntType })
+        ) { navBackStackEntry ->
+            detailRumah(
+                navController = navController,
+                rumahId = navBackStackEntry.arguments?.getInt("rumahId")!!
+            )
+        }
+        composable(
+            screen.detailApart.route + "/{apartId}",
+            arguments = listOf(navArgument("apartId") { type = NavType.IntType })
+        ) { navBackStackEntry ->
+            detailApartment(
+                navController = navController,
+                ApartId = navBackStackEntry.arguments?.getInt("apartId")!!
+            )
+        }
+
+        composable(
+            screen.detailVilla.route + "/{villaId}",
+            arguments = listOf(navArgument("villaId") { type = NavType.IntType })
+        ) { navBackStackEntry ->
+            detailVilla(
+                navController = navController,
+                VillaId = navBackStackEntry.arguments?.getInt("villaId")!!
+            )
+        }
+
+        composable(
+            screen.detailTanah.route + "/{tanahId}",
+            arguments = listOf(navArgument("tanahId") { type = NavType.IntType })
+        ) { navBackStackEntry ->
+            detailTanah(
+                navController = navController,
+                TanahId = navBackStackEntry.arguments?.getInt("tanahId")!!
+            )
         }
     }
 }

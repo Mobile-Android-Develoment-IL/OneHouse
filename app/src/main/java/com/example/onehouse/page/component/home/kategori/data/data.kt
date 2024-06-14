@@ -109,42 +109,78 @@ object data {
         MdaftarApartment(
             id = 1,
             gambar = R.drawable.recom2,
+            titleaprt = "Type Minimalis murah",
+            hrgaprt = "Rp 1.000.000.000",
+            iconlok = R.drawable.map,
+            alamatapart = "Jl. Mangga2, Block A"
         ),
         MdaftarApartment(
             id = 2,
             gambar = R.drawable.recom2,
+            titleaprt = "Type Minimalis murah",
+            hrgaprt = "Rp 1.000.000.000",
+            iconlok = R.drawable.map,
+            alamatapart = "Jl. Mangga2, Block A"
         ),
         MdaftarApartment(
             id = 3,
             gambar = R.drawable.recom2,
+            titleaprt = "Type Minimalis murah",
+            hrgaprt = "Rp 1.000.000.000",
+            iconlok = R.drawable.map,
+            alamatapart = "Jl. Mangga2, Block A"
         )
     )
     val dtVilla = listOf(
         MdaftarVilla(
             id = 1,
             gambar = R.drawable.recom3,
+            titlevilla = "Villa Minimalis",
+            hrgvilla = "Rp 1.000.000.000",
+            iconlok = R.drawable.map,
+            alamatvilla = "Jl. Mangga2, Block A"
         ),
         MdaftarVilla(
             id = 2,
             gambar = R.drawable.recom3,
+            titlevilla = "Villa Minimalis",
+            hrgvilla = "Rp 1.000.000.000",
+            iconlok = R.drawable.map,
+            alamatvilla = "Jl. Mangga2, Block A"
         ),
         MdaftarVilla(
             id = 3,
             gambar = R.drawable.recom3,
+            titlevilla = "Villa Minimalis",
+            hrgvilla = "Rp 1.000.000.000",
+            iconlok = R.drawable.map,
+            alamatvilla = "Jl. Mangga2, Block A"
         )
     )
     val dtTanah = listOf(
         MdaftarTanah(
             id = 1,
             gambar = R.drawable.rumahtr1,
+            titletanah = "Tanah Luas",
+            hrgtanah = "Rp 1.000.000.000",
+            iconlok = R.drawable.map,
+            alamattanah = "Jl. Mangga2, Block A"
         ),
         MdaftarTanah(
             id = 2,
             gambar = R.drawable.rumahtr1,
+            titletanah = "Tanah Luas",
+            hrgtanah = "Rp 1.000.000.000",
+            iconlok = R.drawable.map,
+            alamattanah = "Jl. Mangga2, Block A"
         ),
         MdaftarTanah(
             id = 3,
             gambar = R.drawable.rumahtr1,
+            titletanah = "Tanah Luas",
+            hrgtanah = "Rp 1.000.000.000",
+            iconlok = R.drawable.map,
+            alamattanah = "Jl. Mangga2, Block A"
         )
     )
 

@@ -76,4 +76,7 @@ dependencies {
     //Explore
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.viewpager2)
+
+    //Image
+    implementation("io.coil-kt:coil-compose:2.4.0")
 }
