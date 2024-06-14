@@ -34,6 +34,7 @@ import com.example.onehouse.R
 fun Navbar(
     modifier: Modifier = Modifier
 ) {
+    // NavController
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { NavBottomBar(navController = navController) }
@@ -43,7 +44,6 @@ fun Navbar(
             modifier = Modifier.padding(innerPadding)
         )
     }
-
 }
 
 @Composable
@@ -53,7 +53,7 @@ fun NavBottomBar(
 ) {
     NavigationBar(
         modifier = modifier,
-        containerColor = Color.White,
+        containerColor = Color.Transparent,
         contentColor = MaterialTheme.colorScheme.contentColorFor(Color(0xff121212)),
         windowInsets = WindowInsets(bottom = 100)
     ) {
