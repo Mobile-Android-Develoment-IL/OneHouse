@@ -1,21 +1,13 @@
-package com.example.onehouse.Routing
+package com.example.onehouse.routing
 
-
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -32,62 +24,26 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.onehouse.Page.Chat
-import com.example.onehouse.Page.Explore
-import com.example.onehouse.Page.Favorite
-import com.example.onehouse.Page.Home
-import com.example.onehouse.Page.Profile
-import com.example.onehouse.R
-import com.navbar_explore.Routing.navItem
-import com.navbar_explore.Routing.screen
 
+import com.example.onehouse.R
+
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun Navbar(
-    navController: NavHostController = rememberNavController(),
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
+    val navController = rememberNavController()
     Scaffold(
-        bottomBar = {
-            NavBottomBar(navController)
-        }
-    ) { contentPadding ->
-        NavHost(
+        bottomBar = { NavBottomBar(navController = navController) }
+    ) { innerPadding ->
+        BottomGraph(
             navController = navController,
-            startDestination = screen.Home.route,
-            modifier = modifier.padding(contentPadding)
-        ) {
-            composable(screen.Home.route) {
-                Home(navController = navController)
-            }
-
-            composable(screen.Explore.route) {
-                Explore()
-            }
-
-            composable(screen.Favorite.route) {
-                Favorite()
-            }
-            composable(screen.Chat.route) {
-                Chat()
-            }
-            composable(screen.Profile.route) {
-                Profile()
-            }
-//            composable(
-//                Screen.Detail.route + "/{filmId}",
-//                arguments = listOf(navArgument("filmId") { type = NavType.IntType })
-//            ) { navBackStackEntry ->
-//                DetailHome(
-//                    navController = navController,
-//                    filmId = navBackStackEntry.arguments?.getInt("filmId")
-//                )
-//            }
-        }
+            modifier = Modifier.padding(innerPadding)
+        )
     }
+
 }
 
 @Composable
@@ -97,13 +53,12 @@ fun NavBottomBar(
 ) {
     NavigationBar(
         modifier = modifier,
-        containerColor = Color.Transparent,
+        containerColor = Color.White,
         contentColor = MaterialTheme.colorScheme.contentColorFor(Color(0xff121212)),
-        windowInsets = WindowInsets(top = 5, bottom = 8)
+        windowInsets = WindowInsets(bottom = 100)
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
-
 
         val navItem = listOf(
             navItem(
@@ -135,7 +90,6 @@ fun NavBottomBar(
         navItem.map { item ->
             NavigationBarItem(
                 selected = currentRoute == item.screen.route,
-
                 onClick = {
                     navController.navigate(item.screen.route) {
                         popUpTo(navController.graph.findStartDestination().id) {
