@@ -2,7 +2,6 @@ package com.example.onehouse.page.component.home.kategori.list
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,13 +16,11 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.onehouse.page.component.home.kategori.model.MdaftarRumah
-import com.navbar_explore.Routing.screen
 
 @Composable
 fun ListdaftarRumah(
@@ -39,7 +36,7 @@ fun ListdaftarRumah(
             .height(200.dp)
             .padding(3.dp)
             .clickable {
-                navController.navigate("detailRumah")
+                navController.navigate("detailRumah/${rumah.id}")
             }
     ) {
         Column(

@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.onehouse.page.component.home.kategori.data.data
-import com.example.onehouse.page.component.home.kategori.list.ListdaftarTanah
 import com.example.onehouse.page.component.home.kategori.list.ListdaftarVilla
 import com.example.onehouse.page.component.home.kategori.model.MdaftarVilla
 

@@ -1,7 +1,7 @@
 package com.example.onehouse.page.component.home.kategori
 
 import com.example.onehouse.R
-import com.navbar_explore.Routing.screen
+import com.example.onehouse.routing.screen
 
 object dataKategori {
  val Kategoridt = listOf(

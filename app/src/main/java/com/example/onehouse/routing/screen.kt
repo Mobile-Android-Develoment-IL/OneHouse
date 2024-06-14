@@ -1,4 +1,4 @@
-package com.navbar_explore.Routing
+package com.example.onehouse.routing
 
 sealed class screen(val route: String) {
     data object Home : screen("homescreen")
@@ -10,6 +10,4 @@ sealed class screen(val route: String) {
     data object daftarApartment : screen("daftarApartment")
     data object daftarVilla : screen("daftarVilla")
     data object daftarTanah: screen("daftarTanah")
-    object detailRumah : screen("detailRumah")
-
 }

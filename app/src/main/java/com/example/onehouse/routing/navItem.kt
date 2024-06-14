@@ -1,7 +1,4 @@
-package com.navbar_explore.Routing
-
-import android.icu.text.CaseMap.Title
-import androidx.compose.ui.graphics.vector.ImageVector
+package com.example.onehouse.routing
 
 data class navItem(
     val title: String,

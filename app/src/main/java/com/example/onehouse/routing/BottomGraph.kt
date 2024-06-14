@@ -1,4 +1,4 @@
-package com.example.onehouse.Routing
+package com.example.onehouse.routing
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -13,12 +13,11 @@ import com.example.onehouse.page.Explore
 import com.example.onehouse.page.Favorite
 import com.example.onehouse.page.Home
 import com.example.onehouse.page.Profile
-import com.example.onehouse.page.component.home.kategori.detailKategori.detailRumah
+import com.example.onehouse.page.component.home.kategori.detailKategori.DetailRumah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarApartment
 import com.example.onehouse.page.component.home.kategori.navigate.daftarRumah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarTanah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarVilla
-import com.navbar_explore.Routing.screen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -57,5 +56,15 @@ fun BottomGraph(
             daftarTanah(navController = navController)
         }
 
+        composable("detailRumah/{rumahId}",
+            arguments = listOf(navArgument("rumahId") {
+                type = NavType.IntType
+            })
+        ) { backStackEntry ->
+            val rumahId = backStackEntry.arguments?.getInt("rumahId")
+            if (rumahId != null) {
+                DetailRumah(navController, rumahId)
+            }
+        }
     }
 }

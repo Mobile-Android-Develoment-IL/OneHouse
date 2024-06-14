@@ -17,7 +17,7 @@ import androidx.navigation.NavController
 import com.example.onehouse.page.component.home.kategori.data.data
 
 @Composable
-fun detailRumah(navController: NavController, rumahId: Int) {
+fun DetailRumah(navController: NavController, rumahId: Int) {
     val rumah = data.dtRumah.find { it.id == rumahId }
 
     rumah?.let {
@@ -40,5 +40,4 @@ fun detailRumah(navController: NavController, rumahId: Int) {
             // Add more details here as needed
         }
     } ?: Text("Rumah tidak ditemukan.")
-
 }
