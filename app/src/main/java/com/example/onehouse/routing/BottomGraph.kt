@@ -21,6 +21,7 @@ import com.example.onehouse.page.component.home.kategori.navigate.daftarApartmen
 import com.example.onehouse.page.component.home.kategori.navigate.daftarRumah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarTanah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarVilla
+import com.example.onehouse.page.component.profile.navigate.EditProfile
 import com.example.onehouse.routing.screen
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -43,7 +44,7 @@ fun BottomGraph(
             // Chat()
         }
         composable(screen.Profile.route) {
-            Profile()
+            Profile(navController = navController)
         }
 
         // Home categories
@@ -96,6 +97,16 @@ fun BottomGraph(
             detailTanah(
                 navController = navController,
                 TanahId = navBackStackEntry.arguments?.getInt("tanahId")!!
+            )
+        }
+        // Profile
+        composable(
+            "editProfile/{profilId}",
+            arguments = listOf(navArgument("profilId") { type = NavType.IntType })
+        ) { navBackStackEntry ->
+            EditProfile(
+                navController = navController,
+                profilId = navBackStackEntry.arguments?.getInt("profilId")
             )
         }
     }

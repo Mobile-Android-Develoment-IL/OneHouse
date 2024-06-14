@@ -10,13 +10,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.onehouse.page.component.home.kategori.navigate.daftarApartment
 import com.example.onehouse.page.component.home.kategori.navigate.daftarRumah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarTanah
 import com.example.onehouse.page.component.home.kategori.navigate.daftarVilla
+import com.example.onehouse.page.component.profile.navigate.EditProfile
 import com.example.onehouse.routing.Navbar
 import com.example.onehouse.ui.theme.OneHouseTheme
 
@@ -50,6 +53,15 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("daftarTanah") {
                             daftarTanah(navController = navController)
+                        }
+                        composable(
+                            "editProfile/{profilId}",
+                            arguments = listOf(navArgument("profilId") { type = NavType.IntType })
+                        ) { navBackStackEntry ->
+                            EditProfile(
+                                navController = navController,
+                                profilId = navBackStackEntry.arguments?.getInt("profilId")
+                            )
                         }
                     }
 
